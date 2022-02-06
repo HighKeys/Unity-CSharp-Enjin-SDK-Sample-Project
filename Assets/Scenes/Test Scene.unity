@@ -158,17 +158,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   host: 0
   main:
-    APP_ID: d3dc57d0-be22-4611-bebd-413c759afd2c
-    APP_SECRET: w4NsdKsxnPYxbgu0GO2hEDQQcbGdP4MmMDKd5OcA
+    APP_ID: 
+    APP_SECRET: 
   kovan:
-    APP_ID: a4086675-1431-4319-a13e-319fbc5718da
-    APP_SECRET: iRgNUTtRcIHVHH4ANSlqQEvfOgmJX9WJax4yrZrB
+    APP_ID: 
+    APP_SECRET: 
   jump:
-    APP_ID: 4357c4f3-445a-43c9-aebc-6d1d1dc5bad4
-    APP_SECRET: i4UXoaV4rb5rSN8KifAJcurB92xyK7i1bdXGp38t
+    APP_ID: 
+    APP_SECRET: 
   goerli:
-    APP_ID: 973cfff7-1f9f-4c22-9f10-065443da86c5
-    APP_SECRET: Z1bI90VpDUFhyvTN09F7BqpzfpXX9YEIXlLzINaP
+    APP_ID: 
+    APP_SECRET: 
   _api:
     APP_ID: 
     APP_SECRET: 
@@ -217,8 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mintReq:
     projectWallet: 
-    assetID: 3080000000000978
-    numOfItems: 1
+    assetID: 
+    numOfItems: 
     toWallet: 
 --- !u!114 &1176839
 MonoBehaviour:
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae2a805e1fa3b948aa1100428f8fe0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: EvilOtaku
+  PlayerName: 
 --- !u!1 &115764143
 GameObject:
   m_ObjectHideFlags: 0
