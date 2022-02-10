@@ -4,7 +4,8 @@ using Enjin.SDK.Models;
 
 public class WalletManager : MonoBehaviour
 {
-    public static WalletManager Instance;
+    private PlayerManager playerManager;
+
     public Wallet wallet;
 
     public MetaCard cardPrefab;
@@ -14,15 +15,14 @@ public class WalletManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(Instance == null) Instance = this;
-        else Destroy(this);
+        PlayerManager.OnPlayerAuthentication += (_manager) => {playerManager = _manager;};
     }
 
     public void GetWallet()
     {
-        PlayerManager.Instance.GetPlayer();         
+        playerManager.GetPlayer();         
 
-        wallet = PlayerManager.Instance.player.Wallet;
+        wallet = playerManager.player.Wallet;
 
         if(wallet != null)
         {

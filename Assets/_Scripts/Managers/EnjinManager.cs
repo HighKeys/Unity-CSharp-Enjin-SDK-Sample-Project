@@ -24,9 +24,7 @@ public struct API_Credentials
 }
 
 public class EnjinManager : MonoBehaviour
-{
-    public static EnjinManager Instance;
-    
+{    
     public ProjectClient projectClient;
     
     public Host_Platform host;
@@ -36,6 +34,9 @@ public class EnjinManager : MonoBehaviour
     public PusherEventService EventService;
     [HideInInspector]
     public API_Credentials _api;
+
+    public static event Action<EnjinManager> OnProjectAuthentication;
+    public static event Action OnEventServiceConnected;
     
     void Awake()
     {
@@ -66,10 +67,7 @@ public class EnjinManager : MonoBehaviour
                 APP_SECRET = kovan.APP_SECRET
             },
             _=> main            
-        };
-
-        if(Instance == null) Instance = this;
-        else Destroy(this);
+        };       
     }
     // Start is called before the first frame update
     void Start()
@@ -84,10 +82,15 @@ public class EnjinManager : MonoBehaviour
 
         projectClient.Auth(response.Result.Token);
 
-        if(projectClient.IsAuthenticated) print("Project is now authenticated");
+        if(projectClient.IsAuthenticated)
+        {
+            print("Project is now authenticated");
+            OnProjectAuthentication.Invoke(this);
+        } 
         else print("Project was not authenticated");
 
-        var AccessToken = response.Result.Token;               
+        var AccessToken = response.Result.Token; 
+                   
 
         StartEventService();
     }
@@ -104,7 +107,11 @@ public class EnjinManager : MonoBehaviour
 
         var reg = EventService.RegisterListener(new PlayerListener());
 
-        if(EventService.IsConnected()) print("Event Service is Listening...");
+        if(EventService.IsConnected())
+        {
+            print("Event Service is Listening...");
+            OnEventServiceConnected.Invoke();
+        } 
     }
     public void LogErrors(List<GraphqlError> Errors)
     {

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Enjin.SDK;
 using Enjin.SDK.Models;
@@ -6,22 +7,24 @@ using Enjin.SDK.Shared;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static PlayerManager Instance;
     public PlayerClient playerClient;
     public Player player;
     public string PlayerName;
-
     EnjinManager Enjin;
-    // Start is called before the first frame update
+    public static event Action<PlayerManager> OnPlayerAuthentication;
+
+    void OnEnable()
+    {
+        PlayerListener.PlayerCreated += ()=> print("Player Created");
+        PlayerListener.PlayerLinked += GetPlayer;         
+        PlayerListener.PlayerUpdated += ()=> print("Player Updated");
+        PlayerListener.PlayerUnlinked += ()=> print("Player Unlinked");
+        PlayerListener.PlayerDeleted += ()=> print("Player Deleted");
+    }
     void Start()
     {
-        if(Instance == null) Instance = this;
-        else Destroy(this);
-
-        Enjin = EnjinManager.Instance;
-
-        playerClient = new PlayerClient(Enjin._api.Platform_URL);      
-        PlayerListener.PlayerLinked += GetPlayer;   
+        EnjinManager.OnProjectAuthentication += (_enjin)=> {Enjin = _enjin;};
+        playerClient = new PlayerClient(Enjin._api.Platform_URL);                
     }
     public void SetPlayerName(string _name)
     {
@@ -38,8 +41,8 @@ public class PlayerManager : MonoBehaviour
         if (response.IsSuccess)
         {
             player = response.Result;
-            if(!Enjin.EventService.IsSubscribedToPlayer(EnjinManager.Instance._api.APP_ID, player.Id))
-                Enjin.EventService.SubscribeToPlayer(EnjinManager.Instance._api.APP_ID, player.Id);
+            if(!Enjin.EventService.IsSubscribedToPlayer(Enjin._api.APP_ID, player.Id))
+                Enjin.EventService.SubscribeToPlayer(Enjin._api.APP_ID, player.Id);
             
             if (player.Wallet == null)
             {
@@ -59,7 +62,12 @@ public class PlayerManager : MonoBehaviour
                             .Result
                             .Token);
 
-                print("Player is Authenticated!");
+                if(playerClient.IsAuthenticated)
+                {
+                    print("Player is Authenticated!");
+                    OnPlayerAuthentication.Invoke(this);
+                }
+                
             }
         }
         else
@@ -93,6 +101,11 @@ public class PlayerManager : MonoBehaviour
 
     void OnDisable()
     {
-        Enjin.EventService.UnsubscribeToPlayer(Enjin._api.APP_ID, player.Id);
+        PlayerListener.PlayerCreated -= ()=> print("Player Created");
+        PlayerListener.PlayerLinked -= GetPlayer;         
+        PlayerListener.PlayerUpdated -= ()=> print("Player Updated");
+        PlayerListener.PlayerUnlinked -= ()=> print("Player Unlinked");
+        PlayerListener.PlayerDeleted -= ()=> print("Player Deleted");
+        Enjin.EventService.UnsubscribeToPlayer(Enjin._api.APP_ID, player.Id);        
     }
 }
