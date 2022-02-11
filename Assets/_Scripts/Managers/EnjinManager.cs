@@ -89,8 +89,7 @@ public class EnjinManager : MonoBehaviour
         } 
         else print("Project was not authenticated");
 
-        var AccessToken = response.Result.Token; 
-                   
+        var AccessToken = response.Result.Token;                    
 
         StartEventService();
     }
