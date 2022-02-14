@@ -15,10 +15,10 @@ public class AssetManager : MonoBehaviour
     Player Player;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         EnjinManager.OnProjectAuthentication += (_enjin)=> {Enjin = _enjin;};
-        PlayerManager.OnPlayerAuthentication += (_manager) => {Player = _manager.player;};
+        PlayerManager.OnGetPlayerClient += (_manager) => {Player = _manager.player;};
     }
 
     [ContextMenu("Create Asset")]   

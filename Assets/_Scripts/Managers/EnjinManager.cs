@@ -85,11 +85,12 @@ public class EnjinManager : MonoBehaviour
         if(projectClient.IsAuthenticated)
         {
             print("Project is now authenticated");
-            OnProjectAuthentication.Invoke(this);
+            OnProjectAuthentication?.Invoke(this);
         } 
         else print("Project was not authenticated");
 
-        var AccessToken = response.Result.Token;                    
+        var AccessToken = response.Result.Token; 
+                   
 
         StartEventService();
     }
@@ -109,7 +110,7 @@ public class EnjinManager : MonoBehaviour
         if(EventService.IsConnected())
         {
             print("Event Service is Listening...");
-            OnEventServiceConnected.Invoke();
+            OnEventServiceConnected?.Invoke();
         } 
     }
     public void LogErrors(List<GraphqlError> Errors)

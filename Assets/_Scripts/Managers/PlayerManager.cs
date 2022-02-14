@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public Player player;
     public string PlayerName;
     EnjinManager Enjin;
-    public static event Action<PlayerManager> OnPlayerAuthentication;
+    public static event Action<PlayerManager> OnGetPlayerClient;
 
     void OnEnable()
     {
@@ -21,10 +21,15 @@ public class PlayerManager : MonoBehaviour
         PlayerListener.PlayerUnlinked += ()=> print("Player Unlinked");
         PlayerListener.PlayerDeleted += ()=> print("Player Deleted");
     }
-    void Start()
+    void Awake()
     {
-        EnjinManager.OnProjectAuthentication += (_enjin)=> {Enjin = _enjin;};
-        playerClient = new PlayerClient(Enjin._api.Platform_URL);                
+        EnjinManager.OnProjectAuthentication += (_enjin)=> 
+        {
+            Enjin = _enjin;
+            playerClient = new PlayerClient(Enjin._api.Platform_URL);
+            OnGetPlayerClient?.Invoke(this);
+        };
+                        
     }
     public void SetPlayerName(string _name)
     {
@@ -65,7 +70,6 @@ public class PlayerManager : MonoBehaviour
                 if(playerClient.IsAuthenticated)
                 {
                     print("Player is Authenticated!");
-                    OnPlayerAuthentication.Invoke(this);
                 }
                 
             }

@@ -124,42 +124,143 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &1176837 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5091885207324710035, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-    type: 3}
-  m_PrefabInstance: {fileID: 5091885207325647254}
+--- !u!1 &1176834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1176836}
+  - component: {fileID: 1176835}
+  - component: {fileID: 1176839}
+  - component: {fileID: 1176838}
+  - component: {fileID: 1176837}
+  m_Layer: 0
+  m_Name: Enjin Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1176835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04127430fbca9644998164aaf19d8edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  host: 0
+  main:
+    APP_ID: 
+    APP_SECRET: 
+  kovan:
+    APP_ID: 
+    APP_SECRET: 
+  jump:
+    APP_ID: 
+    APP_SECRET: 
+  goerli:
+    APP_ID: 
+    APP_SECRET: 
+  _api:
+    APP_ID: 
+    APP_SECRET: 
+--- !u!4 &1176836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176834}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1176837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176834}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c06a923ea22ec74096a86efa6e6e76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1176838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5091885207324710032, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
+  cardPrefab: {fileID: 5780747089095460991, guid: 5f8ffa38b7b0e1a41ac280a08faf91ef,
     type: 3}
-  m_PrefabInstance: {fileID: 5091885207325647254}
+  WalletWindow: {fileID: 466957241}
+  cardList: []
+--- !u!114 &1176838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1176834}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74831161688217b47965b772e5b6d1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1176839 stripped
+  CreateReq:
+    Name: 
+    TotalSuppy: 
+    InitialReserve: 
+    SupplyModel: 0
+    MeltValue: 
+    MeltFeeRatio: 0
+    TransferMode: 0
+    TransferSettings:
+      FeeType: 0
+      AssetId: 
+      Value: 
+    NonFungible: 0
+    EthAddress: 
+  MintReq:
+    projectWallet: 
+    assetID: 
+    numOfItems: 
+    toWallet: 
+  AdvSendReq:
+    Transfers:
+    - FromAddress: 
+      ToAddress: 
+      AssetId: 
+      AssetIndex: 
+      Value: 
+    data: 
+    WalletAddress: 
+  CreateTradeReq:
+    AskingAssets: []
+    OfferingAssets: []
+    SecondPartyAddress: 
+    WalletAddress: 
+--- !u!114 &1176839
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5091885207324710033, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-    type: 3}
-  m_PrefabInstance: {fileID: 5091885207325647254}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1176834}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ae2a805e1fa3b948aa1100428f8fe0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerName: 
 --- !u!1 &115764143
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +698,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 362}
+  m_AnchoredPosition: {x: 0, y: 312}
   m_SizeDelta: {x: 1027.2239, y: 234}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &466957242
@@ -2163,77 +2264,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052254351}
   m_CullTransparentMesh: 1
---- !u!1001 &5091885207325647254
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710034, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091885207324710035, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: WalletWindow
-      value: 
-      objectReference: {fileID: 466957241}
-    - target: {fileID: 5091885207324710036, guid: bd0e05f93c3ca6f4389ceb80dc5514c8,
-        type: 3}
-      propertyPath: m_Name
-      value: Enjin Manager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bd0e05f93c3ca6f4389ceb80dc5514c8, type: 3}

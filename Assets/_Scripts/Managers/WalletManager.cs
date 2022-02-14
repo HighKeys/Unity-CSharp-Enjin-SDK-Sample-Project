@@ -13,9 +13,9 @@ public class WalletManager : MonoBehaviour
     public List<MetaCard> cardList = new List<MetaCard>();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        PlayerManager.OnPlayerAuthentication += (_manager) => {playerManager = _manager;};
+        PlayerManager.OnGetPlayerClient += (_manager) => {playerManager = _manager;};
     }
 
     public void GetWallet()
